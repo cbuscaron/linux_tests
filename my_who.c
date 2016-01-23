@@ -7,6 +7,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <utmp.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -18,8 +19,10 @@
 int main()
 {
   struct utmp  current_record;
+  int utmpfd;
+  int reclen = sizeof(current_record);
 
- if((utmpfd=open(UTMP_FILE, ORDONLY)) == -1)
+ if((utmpfd=open(UTMP_FILE, O_RDONLY)) == -1)
  {
    perror(UTMP_FILE);
    exit(1);
