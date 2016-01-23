@@ -19,7 +19,7 @@
 int main()
 {
   struct utmp  current_record;
-  int utmpfd;
+  int utmpfd; //read from file descriptor
   int reclen = sizeof(current_record);
 
  if((utmpfd=open(UTMP_FILE, O_RDONLY)) == -1)
@@ -33,5 +33,30 @@ int main()
  
  close(utmpfd);
  return 0;
+
+}
+
+
+/*
+ * show_info()
+ * displays contents of the utmp struct in human readle form
+ * *note* these sizes should not be hardwired
+ */
+
+
+show_info(struct utmp *utbufp)
+{
+
+  printf("%-8.8s", utbufp->ut_name);
+  printf(" ");
+  printf("%-8.8s", utbufp->ut_line);
+  printf(" ");
+  printf("%101d", utbufp->ut_time);
+  printf(" ");
+
+#ifdef SHOWHOST
+  printf("(%s)", utbufp->ut_host);
+#endif
+  printf("\n");
 
 }
