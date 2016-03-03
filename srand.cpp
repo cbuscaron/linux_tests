@@ -80,6 +80,17 @@ int main (int argc, char* argv[])
   std::cout << sizeof(test1.state) << std::endl;
   std::cout << sizeof(test1.angle) << std::endl;
   std::cout << sizeof(test1) << std::endl;
+ 
+  std::cout<<"-------------------------"<<std::endl;
+  int x = (254 >> 8) & 0xFF;
+  std::cout<< x <<std::endl;
+  
+  x = (255 >> 8) & 0xFF;
+  std::cout<< x <<std::endl;
+  
+  x = (256 >> 8) & 0XFF;
+  std::cout<< x <<std::endl;
+ std::cout<<"-------------------------"<<std::endl;
 
 
 
