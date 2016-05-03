@@ -3,6 +3,9 @@
  * Author: Camilo F. Buscaron
  */
 
+#include <limits.h>
+#include <unistd.h>
+
 #include <string>
 #include <iostream>
 #include <stdio.h>
@@ -13,6 +16,7 @@
 #include <vector>
 #include <fstream>
 #include <map>
+
 
 int main(int argc, char* argv[])
 {
@@ -41,6 +45,10 @@ int main(int argc, char* argv[])
       std::cout << "Found" << std::endl;
     }
 
+    //getting local path linux
+  char result[ PATH_MAX ];
+  ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
+  std::cout << std::string( result, (count > 0) ? count : 0 ) << std::endl;
 
     return 0;
 }
