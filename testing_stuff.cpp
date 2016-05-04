@@ -46,9 +46,9 @@ int main(int argc, char* argv[])
     }
 
     //getting local path linux
-  char result[ PATH_MAX ];
-  ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
-  std::cout << std::string( result, (count > 0) ? count : 0 ) << std::endl;
-
+  char result[PATH_MAX];
+  //ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
+  //std::cout << std::string( result, (count > 0) ? count : 0 ) << std::endl;
+  std::cout << std::string(getcwd(result, sizeof(result))) << std::endl;
     return 0;
 }
